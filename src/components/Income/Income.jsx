@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import s from "./Income.module.css";
 import editpen from "../../img/edit.png";
 import education from "../../img/educ.png";
-import { v4 as uuidv4 } from "uuid";
 import newblock from "../../img/new.png";
 
 import Modal from "../Modal/Modal";
@@ -18,16 +17,16 @@ const Income = (props) => {
   const [options, setOptions] = useState("");
   const [ids, setId] = useState("");
   const [amounts, setAmounts] = useState(0);
+
   function edits(id) {
-    let copyData = props.data;
-    for (let i = 0; i < copyData.length; i++) {
-      if (copyData[i].id == id) {
-        copyData[i].name = modalTitle;
-        copyData[i].amount = value;
-        props.setData(copyData);
+    for (let i = 0; i < props.data.length; i++) {
+      if (props.data[i].id == id) {
+        props.data[i].name = modalTitle;
+        props.data[i].amount = value;
       }
     }
     incomeAmountCounter();
+    props.rerenderTree();
   }
 
   function incomeAmountCounter() {
@@ -49,8 +48,7 @@ const Income = (props) => {
       inputAmount !== null &&
       options !== undefined
     ) {
-      let copyData = props.data;
-      copyData.push({
+      props.data.push({
         title: props.title,
         id: props.data.length + 1,
         name: modalTitle2,
@@ -59,25 +57,12 @@ const Income = (props) => {
         opt: options,
       });
 
-      props.setData(copyData);
-      // props.setData([
-      //   ...props.data,
-
-      //   {
-      //     title: props.title,
-      //     id: props.data.length + 1,
-      //     name: modalTitle2,
-      //     img: "",
-      //     amount: inputAmount,
-      //     opt: options,
-      //   },
-      // ]);
-      console.log(props.data);
       setinputAmount("");
       setModalTitle2("");
     }
     setActiveModal(false);
     incomeAmountCounter();
+    props.rerenderTree();
   }
 
   return (
@@ -153,7 +138,7 @@ const Income = (props) => {
                     placeholder="Планируете"
                     value={inputAmount}
                     onChange={(e) => setinputAmount(e.target.value)}
-                    type="text"
+                    type="number"
                   />
 
                   <div className={s.modal_valute}>

@@ -1,0 +1,9 @@
+.formInput {
+    display: flex;
+    gap: 100px;
+}
+
+.formBlock {
+    display: flex;
+    gap: 15px;
+}

@@ -1,12 +1,59 @@
 import logo from './logo.svg';
 import './App.css';
-import Income from './components/Income/Income';
-import { useState } from 'react';
-import Account from './components/Accounts/Account';
-import Expenses from './components/Expenses/Expenses';
-import History from './components/History/History';
+import { useState, useEffect} from 'react';
 
-function App() {
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Main from './components/Main/Main';
+import SignIn from './components/SignIn/SignIn';
+import SignUp from './components/SignUp/SignUp';
+
+
+function App(props) {
+  const [isAuth, setIsAuth] = useState(false)
+  const logInfo = JSON.parse(localStorage.getItem("logInfo"))
+    if(!logInfo)localStorage.setItem(
+      "logInfo",
+      JSON.stringify({
+        users: [{ login: "ad1lek", password: "123123", isAuth: false, data:[] }],
+      })
+    );
+    useEffect(() => {
+        logInfo.users.forEach((user) => {
+            if (user.isAuth) {
+                setIsAuth(true)
+            }
+        })
+    }, [])
+
+  
+
+  const defaultData = [{
+      title:"Income",
+      id:1,
+      name: "Стипендия",
+      img: "",
+      amount : 0,
+      opt:""
+    },
+    {
+      title:"Account",
+      id:2,
+      name: "Kaspi",
+      img: "",
+      amount : 0,
+      opt:"",
+      inp:"D"
+    },
+    {
+      title:"Expenses",
+      id:3,
+      name: "Food",
+      img: "",
+      amount : 0,
+      opt:"",
+      inp:"D"
+    }
+  ]
   const[data,setData] = useState([{
         title:"Income",
         id:1,
@@ -18,41 +65,39 @@ function App() {
   {
     title:"Account",
     id:2,
-    name: "Стипендия",
+    name: "Kaspi",
     img: "",
-    amount : 36000,
+    amount : 0,
     opt:"",
     inp:"D"
 },
 {
   title:"Expenses",
-  id:2,
-  name: "Стипендия",
+  id:3,
+  name: "Food",
   img: "",
-  amount : 36000,
+  amount : 0,
   opt:"",
   inp:"D"
 }
 ])
-
-
-  let currentUser = {
-    id:1,
-    cname : "admin",
-    password : "0000",
-    data:data
-  }
-
+  
+  
+  
+  
+  
+  
 
   return (
- <div className='appmain'>
- <div>
-  <Income title = {"Income"}  data = {data} setData = {setData}/> 
-  <Account title = {"Account"} data = {data} setData = {setData}/>
-  <Expenses title ={"Expenses"} data = {data} setData = {setData} />
- </div>
-  <History/>
- </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/main" element={<Main data={data} setData={setData} state = {props.state} defaultData={defaultData} rerenderTree={props.rerenderTree}/>}/>
+        <Route path='/' element={<SignIn setIsAuth={setIsAuth}/>}/>
+        <Route path='/signUp' element={<SignUp/>}/>
+      </Routes>
+    </BrowserRouter>
+
+ 
   );
 }
 
