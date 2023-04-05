@@ -12,7 +12,7 @@ function App() {
         id:1,
         name: "Стипендия",
         img: "",
-        amount : 36000,
+        amount : 0,
         opt:""
   },
   {
@@ -47,7 +47,7 @@ function App() {
   return (
  <div className='appmain'>
  <div>
- <Income title = {"Income"}  data = {data} setData = {setData}/> 
+  <Income title = {"Income"}  data = {data} setData = {setData}/> 
   <Account title = {"Account"} data = {data} setData = {setData}/>
   <Expenses title ={"Expenses"} data = {data} setData = {setData} />
  </div>
