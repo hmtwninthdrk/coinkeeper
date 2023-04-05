@@ -13,18 +13,14 @@ const HeaderInput = (props) => {
   }
 
   function transfer() {
-    let copyData = props.data;
-
     for (let i = 0; i < props.data.length; i++) {
-      if (selectorFrom == copyData[i].name) {
-        copyData[i].amount = copyData[i].amount - money;
+      if (selectorFrom == props.data[i].name) {
+        props.data[i].amount = props.data[i].amount - money;
       }
-      if (selectorTo == copyData[i].name) {
-        copyData[i].amount = copyData[i].amount + parseFloat(money);
+      if (selectorTo == props.data[i].name) {
+        props.data[i].amount = props.data[i].amount + parseFloat(money);
       }
     }
-
-    props.setData(copyData);
 
     props.rerenderTree();
   }
