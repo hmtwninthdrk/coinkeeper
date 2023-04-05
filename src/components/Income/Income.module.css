@@ -1,0 +1,84 @@
+.block{
+    width: 540px;
+    border: 1px solid #c8c6c6;
+    margin: 50px;
+}
+
+.header{
+    padding: 20px;
+    display: flex;
+    background-color: aliceblue;
+    border-bottom: 2px solid #c8c6c6;
+}
+
+.title{
+    margin-right: 100px;
+}
+
+.budget{
+    display: flex;
+}
+
+.status{
+    margin-right: 25px;
+}
+
+.main{
+    height: 200px;
+}
+
+.main_inner{
+    display: flex;
+    align-items: center;
+    
+}
+
+.block_amount{
+    text-align: center;
+}
+
+.main_block{
+    padding: 20px;
+    margin-right: 50px;
+}
+
+.icon_edit{
+    margin:20px 0;
+    position: relative;
+    
+    
+}
+
+.icon{
+    width: 50px;
+    height: 50px;
+    
+}
+
+.icon_edit:hover .edit{
+    opacity: 1;
+    
+}
+
+.edit{
+    position: absolute;
+    opacity: 0;
+    transition: .2s linear;
+    content: "";
+    left: 60px;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.modal_header{
+  
+    
+}
+
+.newblock{
+    width: 50px;
+    padding-bottom: 24px;
+    height: 50px;
+}
