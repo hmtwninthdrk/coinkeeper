@@ -71,7 +71,8 @@ const Account = (props) => {
       setModalTitle2("");
       setActiveModal2(false);
     }
-    
+    incomeAmountCounter();
+    props.rerenderTree();
   }
 
   return (
@@ -84,7 +85,7 @@ const Account = (props) => {
 
         <div className={s.budget}>
           <div className={s.status}>
-            <div>{"0 "}</div>
+            <div>{amounts}</div>
             <div>В наличий</div>
           </div>
         </div>

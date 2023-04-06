@@ -17,6 +17,7 @@ const Income = (props) => {
   const [options, setOptions] = useState(""); // для валюты
   const [ids, setId] = useState(""); // айдишка
   const [amounts, setAmounts] = useState(0); 
+  
 
   function edits(id) {
     if (
@@ -37,6 +38,8 @@ const Income = (props) => {
     setActiveModal(false);
   }
   }
+
+  
 
   function incomeAmountCounter() {
     let counter = 0;

@@ -24,7 +24,18 @@ const HeaderInput = (props) => {
 
     props.rerenderTree();
     props.setHistoryActive(true);
+
+    props.history.push({
+      id:props.history.length + 1,
+      from_title:selectorFrom,
+      to_title:selectorTo,
+      money:money
+    });
+
+    
   }
+
+
   return (
     <div className={s.HeaderInput}>
       <div className={s.formInput}>

@@ -21,6 +21,8 @@ function Main(props) {
       <Header />
       <div>
         <HeaderInput
+        history = {props.history}
+        setHistory = {props.setHistory}
         historyActive = {historyActive}
         setHistoryActive = {setHistoryActive}
           data={props.state.currentUser.data}
@@ -31,6 +33,7 @@ function Main(props) {
         <div className="mainchapter">
         <div>
           <Income
+          
             title={"Income"}
             data={props.state.currentUser.data}
             rerenderTree={props.rerenderTree} /*setData={props.setData}*/
