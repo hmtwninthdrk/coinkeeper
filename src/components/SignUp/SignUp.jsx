@@ -25,9 +25,12 @@ const SignUp = () => {
           Navig("/");
         } else {
           logInfo.users.push({
+            id: logInfo.users.length + 1,
             login: login,
             password: password,
             isAuth: false,
+            data: [],
+            history: [],
           });
           localStorage.setItem("logInfo", JSON.stringify(logInfo));
           Navig("/");

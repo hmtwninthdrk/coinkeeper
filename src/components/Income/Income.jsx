@@ -7,17 +7,16 @@ import newblock from "../../img/new.png";
 import Modal from "../Modal/Modal";
 import Newblock from "../New/Newblock";
 const Income = (props) => {
-  const [activeModal2, setActiveModal2] = useState(false); //отвечает за открытие модалки добавить 
+  const [activeModal2, setActiveModal2] = useState(false); //отвечает за открытие модалки добавить
   const [inputTitle, setInputTitle] = useState(""); // название инпута
   const [inputAmount, setinputAmount] = useState(""); // название количество денег
   const [activeModal, setActiveModal] = useState(false); //отвечает за открытие модалки редактировать
   const [value, setValue] = useState(""); // название количество тоже денег
   const [modalTitle, setModalTitle] = useState(""); // название инпута в модалке редактировать
-  const [deleteOpt, setDeleteOpt] = useState(true); // в модалке при нажатий на кнопку удалить чтобы поялвялись другие кнопки 
+  const [deleteOpt, setDeleteOpt] = useState(true); // в модалке при нажатий на кнопку удалить чтобы поялвялись другие кнопки
   const [options, setOptions] = useState(""); // для валюты
   const [ids, setId] = useState(""); // айдишка
-  const [amounts, setAmounts] = useState(0); 
-  
+  const [amounts, setAmounts] = useState(0);
 
   function edits(id) {
     if (
@@ -27,19 +26,18 @@ const Income = (props) => {
       value !== null &&
       options !== undefined
     ) {
-    for (let i = 0; i < props.data.length; i++) {
-      if (props.data[i].id == id) {
-        props.data[i].name = modalTitle;
-        props.data[i].amount = value;
+      for (let i = 0; i < props.data.length; i++) {
+        if (props.data[i].id == id) {
+          props.data[i].name = modalTitle;
+          props.data[i].amount = +value;
+        }
       }
-    }
-    incomeAmountCounter();
-    props.rerenderTree();
-    setActiveModal(false);
-  }
-  }
 
-  
+      incomeAmountCounter();
+      props.rerenderTree();
+      setActiveModal(false);
+    }
+  }
 
   function incomeAmountCounter() {
     let counter = 0;

@@ -5,10 +5,11 @@ let state = {
         id:"",
         login : "",
         password : "",
-        data:[]
+        data:[],
+        history: []
     }
     
 }
 
-console.log(state.currentUser)
+
 export default state;

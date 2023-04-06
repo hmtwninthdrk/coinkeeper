@@ -26,16 +26,16 @@ const Expenses = (props) => {
       value !== null &&
       options !== undefined
     ) {
-    for (let i = 0; i < props.data.length; i++) {
-      if (props.data[i].id == id) {
-        props.data[i].name = modalTitle;
-        props.data[i].amount = value;
+      for (let i = 0; i < props.data.length; i++) {
+        if (props.data[i].id == id) {
+          props.data[i].name = modalTitle;
+          props.data[i].amount = parseFloat(value);
+        }
       }
+      incomeAmountCounter();
+      props.rerenderTree();
+      setActiveModal(false);
     }
-    incomeAmountCounter();
-    props.rerenderTree();
-    setActiveModal(false);
-  }
   }
 
   function incomeAmountCounter() {
@@ -62,9 +62,9 @@ const Expenses = (props) => {
         id: props.data.length + 1,
         name: modalTitle2,
         img: "",
-        amount: inputAmount,
+        amount: parseFloat(inputAmount),
         opt: options,
-    });
+      });
 
       setinputAmount("");
       setModalTitle2("");
@@ -72,7 +72,6 @@ const Expenses = (props) => {
     }
     incomeAmountCounter();
     props.rerenderTree();
-    
   }
   return (
     <div className={s.block}>

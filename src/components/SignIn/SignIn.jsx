@@ -2,7 +2,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import si from "./SignIn.module.css";
 
-function SignIn({ setIsAuth }) {
+function SignIn({ setIsAuth, state }) {
   let logInfo = JSON.parse(localStorage.getItem("logInfo"));
   const [password, setPassword] = useState();
   const [login, setLogin] = useState();
@@ -14,12 +14,12 @@ function SignIn({ setIsAuth }) {
         usersArray[i].password == existPassword
       ) {
         usersArray[i].isAuth = true;
-        logInfo.users[i] = {
-          login: existLogin,
-          password: existPassword,
-          isAuth: true,
-        };
+        logInfo.users[i].login = existLogin;
+        logInfo.users[i].password = existPassword;
+        logInfo.users[i].isAuth = true;
+
         localStorage.setItem("logInfo", JSON.stringify(logInfo));
+        state.currentUser = logInfo.users[i];
         setIsAuth(true);
         return true;
       }

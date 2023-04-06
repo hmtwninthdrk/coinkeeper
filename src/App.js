@@ -14,7 +14,7 @@ function App(props) {
     if(!logInfo)localStorage.setItem(
       "logInfo",
       JSON.stringify({
-        users: [{ login: "ad1lek", password: "123123", isAuth: false, data:[] }],
+        users: [{ id: 1, login: "ad1lek", password: "123123", isAuth: false, data:[], history:[] }],
       })
     );
     useEffect(() => {
@@ -54,41 +54,8 @@ function App(props) {
       
     }
   ]
-  const[data,setData] = useState([{
-        title:"Income",
-        id:1,
-        name: "Стипендия",
-        img: "",
-        amount : 0,
-        opt:""
-  },
-  {
-    title:"Account",
-    id:2,
-    name: "Kaspi",
-    img: "",
-    amount : 0,
-    opt:"",
-    
-},
-{
-  title:"Expenses",
-  id:3,
-  name: "Food",
-  img: "",
-  amount : 0,
-  opt:"",
-  
-}
-])
-  
 
-const[history,setHistory] = useState([{
-  id:1,
-  from_title:"Стипендия",
-  to_title:"Kaspi",
-  money:100
-}])
+
   
   
   
@@ -97,8 +64,8 @@ const[history,setHistory] = useState([{
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/main" element={<Main history = {history} setHistory = {setHistory} data={data} setData={setData} state = {props.state} defaultData={defaultData} rerenderTree={props.rerenderTree}/>}/>
-        <Route path='/' element={<SignIn setIsAuth={setIsAuth}/>}/>
+        <Route path="/main" element={<Main state = {props.state} isAuth = {isAuth} setIsAuth={setIsAuth} defaultData={defaultData} rerenderTree={props.rerenderTree}/>}/>
+        <Route path='/' element={<SignIn setIsAuth={setIsAuth} state = {props.state}/>}/>
         <Route path='/signUp' element={<SignUp/>}/>
       </Routes>
     </BrowserRouter>

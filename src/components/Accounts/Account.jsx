@@ -19,7 +19,6 @@ const Account = (props) => {
   const [ids, setId] = useState("");
   const [amounts, setAmounts] = useState(0);
 
-
   function edits(id) {
     if (
       modalTitle !== "" &&
@@ -28,16 +27,17 @@ const Account = (props) => {
       value !== null &&
       options !== undefined
     ) {
-    for (let i = 0; i < props.data.length; i++) {
-      if (props.data[i].id == id) {
-        props.data[i].name = modalTitle;
-        props.data[i].amount = value;
+      for (let i = 0; i < props.data.length; i++) {
+        if (props.data[i].id == id) {
+          props.data[i].name = modalTitle;
+          props.data[i].amount = parseFloat(value);
+        }
       }
+
+      incomeAmountCounter();
+      props.rerenderTree();
+      setActiveModal(false);
     }
-    incomeAmountCounter();
-    props.rerenderTree();
-    setActiveModal(false);
-  }
   }
 
   function incomeAmountCounter() {
@@ -64,9 +64,10 @@ const Account = (props) => {
         id: props.data.length + 1,
         name: modalTitle2,
         img: "",
-        amount: inputAmount,
+        amount: parseFloat(inputAmount),
         opt: options,
       });
+      console.log(props.data);
       setInputAmount("");
       setModalTitle2("");
       setActiveModal2(false);

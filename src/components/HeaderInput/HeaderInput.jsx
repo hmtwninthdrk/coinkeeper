@@ -3,7 +3,7 @@ import s from "./HeaderInput.module.css";
 const HeaderInput = (props) => {
   const [selectorFrom, setSelectorFrom] = useState("");
   const [selectorTo, setSelectorTo] = useState("");
-  
+
   const [money, setMoney] = useState("");
   let incomeOptions = props.data.map((item) =>
     item.title == "Income" ? <option value={item.name}>{item.name}</option> : ""
@@ -21,20 +21,16 @@ const HeaderInput = (props) => {
         props.data[i].amount = props.data[i].amount + parseFloat(money);
       }
     }
-
-    props.rerenderTree();
-    props.setHistoryActive(true);
+    console.log(props.data);
 
     props.history.push({
-      id:props.history.length + 1,
-      from_title:selectorFrom,
-      to_title:selectorTo,
-      money:money
+      id: props.history.length + 1,
+      from_title: selectorFrom,
+      to_title: selectorTo,
+      money: money,
     });
-
-    
+    props.rerenderTree();
   }
-
 
   return (
     <div className={s.HeaderInput}>

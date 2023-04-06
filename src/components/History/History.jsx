@@ -3,8 +3,8 @@ import s from "./History.module.css";
 const History = (props) => {
   return (
     <div className={s.history_block}>
-      {props.historyActive ? (
-        props.history.map((item) => 
+      {props.history.length != 0 ? (
+        props.history.map((item) => (
           <div className={s.history_inner}>
             <div className={s.hisory_top}>
               <div className={s.from}>
@@ -14,18 +14,13 @@ const History = (props) => {
               <div className={s.to_title}>{item.to_title}</div>
             </div>
             <div className={s.history_bottom}>
-        <div className={s.currentToMoney}></div>
-        <div>Баланс</div>
-        <div className={s.money_title}></div>
-        <div>Итого</div>
-      </div>
+              <div className={s.currentToMoney}></div>
+              <div>Баланс</div>
+              <div className={s.money_title}></div>
+              <div>Итого</div>
+            </div>
           </div>
-        
-        )
-      
-        
-        
-        
+        ))
       ) : (
         <>
           <div className={s.title}>ПОНЕДЕЛЬНИК, 3 апреля</div>
