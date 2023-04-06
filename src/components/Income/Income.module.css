@@ -138,6 +138,7 @@ input {outline:none;}
 
 
 
+
 .newblock{
     width: 50px;
     padding-left: 10px;
@@ -181,3 +182,15 @@ input {outline:none;}
     color: #fff;
     border-radius: 0 0 10px 0;
 }
+
+.modal_right{
+    background-color: #fff;
+    width: 100%;
+    margin-left: 10px;
+}
+
+.modal{
+    display: flex;
+    
+}
+

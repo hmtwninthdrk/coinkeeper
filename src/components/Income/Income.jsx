@@ -18,7 +18,10 @@ const Income = (props) => {
   const [ids, setId] = useState(""); // айдишка
   const [amounts, setAmounts] = useState(0);
 
-  
+
+  let defaultIcons = ["books.png","credit-card.png","fork.png","monitor.png"]
+  const [icons,setIcons] = useState("books.png");
+
 
   function deleteItems(id){
     for (let i = 0; i < props.data.length; i++) {
@@ -71,6 +74,7 @@ const Income = (props) => {
     ) {
       props.data.push({
         title: props.title,
+        
         id: props.data.length + 1,
         name: inputTitle,
         img: "",
@@ -147,7 +151,9 @@ const Income = (props) => {
                 />
               </div>
 
-              <Modal active={activeModal2} setActive={setActiveModal2}>
+              <Modal defaultIcons = {defaultIcons} setIcons = {setIcons} active={activeModal2} setActive={setActiveModal2}>
+                <div className={s.modal}>
+                <div className={s.modal_left}>
                 <div className={s.modal_header}>
                   <input
                     className={s.input_style}
@@ -156,6 +162,8 @@ const Income = (props) => {
                     onChange={(e) => setInputTitle(e.target.value)}
                     type="text"
                   />
+
+              
 
                   <input
                     className={s.input_style}
@@ -167,6 +175,8 @@ const Income = (props) => {
 
                   <div className={s.modal_valute}>
                     <div>Валюта</div>
+
+                    
                     <select
                       className={s.select_style}
                       onChange={(e) => setOptions(e.target.value)}
@@ -186,6 +196,9 @@ const Income = (props) => {
                 <button className={s.addbtn} onClick={addBlock}>
                   Добавить
                 </button>
+                </div>
+                
+                </div>
               </Modal>
             </div>
           </Newblock>
@@ -201,8 +214,7 @@ const Income = (props) => {
             onChange={(e) => setModalTitle(e.target.value)}
             type="text"
           />
-          
-        
+
         </div>
         <div className={s.modal_main}>
           <input
