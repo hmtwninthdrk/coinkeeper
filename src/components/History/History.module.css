@@ -1,3 +1,19 @@
 .title{
-    font-size: 25px;
+    margin-bottom: 12px;
+    font-size: 21px;
+    color: #696868;
+    text-align: left;
+    font-weight: 500;
+}
+
+.history_block{
+    margin-top: 50px;
+    width: 50%;
+    box-sizing: border-box;
+}
+
+.history_inner{
+    background-color: #969292;
+    width: 500px;
+    height: 200px;
 }

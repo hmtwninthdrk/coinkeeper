@@ -7,18 +7,25 @@ import newblock from "../../img/new.png";
 import Modal from "../Modal/Modal";
 import Newblock from "../New/Newblock";
 const Income = (props) => {
-  const [activeModal2, setActiveModal2] = useState(false);
-  const [modalTitle2, setModalTitle2] = useState("");
-  const [inputAmount, setinputAmount] = useState("");
-  const [activeModal, setActiveModal] = useState(false);
-  const [value, setValue] = useState("");
-  const [modalTitle, setModalTitle] = useState("");
-  const [deleteOpt, setDeleteOpt] = useState(true);
-  const [options, setOptions] = useState("");
-  const [ids, setId] = useState("");
-  const [amounts, setAmounts] = useState(0);
+  const [activeModal2, setActiveModal2] = useState(false); //отвечает за открытие модалки добавить 
+  const [inputTitle, setInputTitle] = useState(""); // название инпута
+  const [inputAmount, setinputAmount] = useState(""); // название количество денег
+  const [activeModal, setActiveModal] = useState(false); //отвечает за открытие модалки редактировать
+  const [value, setValue] = useState(""); // название количество тоже денег
+  const [modalTitle, setModalTitle] = useState(""); // название инпута в модалке редактировать
+  const [deleteOpt, setDeleteOpt] = useState(true); // в модалке при нажатий на кнопку удалить чтобы поялвялись другие кнопки 
+  const [options, setOptions] = useState(""); // для валюты
+  const [ids, setId] = useState(""); // айдишка
+  const [amounts, setAmounts] = useState(0); 
 
   function edits(id) {
+    if (
+      modalTitle !== "" &&
+      value !== "" &&
+      modalTitle !== null &&
+      value !== null &&
+      options !== undefined
+    ) {
     for (let i = 0; i < props.data.length; i++) {
       if (props.data[i].id == id) {
         props.data[i].name = modalTitle;
@@ -27,6 +34,8 @@ const Income = (props) => {
     }
     incomeAmountCounter();
     props.rerenderTree();
+    setActiveModal(false);
+  }
   }
 
   function incomeAmountCounter() {
@@ -42,25 +51,25 @@ const Income = (props) => {
 
   function addBlock() {
     if (
-      modalTitle2 !== "" &&
+      inputTitle !== "" &&
       inputAmount !== "" &&
-      modalTitle2 !== null &&
+      inputTitle !== null &&
       inputAmount !== null &&
       options !== undefined
     ) {
       props.data.push({
         title: props.title,
         id: props.data.length + 1,
-        name: modalTitle2,
+        name: inputTitle,
         img: "",
         amount: inputAmount,
         opt: options,
       });
 
       setinputAmount("");
-      setModalTitle2("");
+      setInputTitle("");
+      setActiveModal2(false);
     }
-    setActiveModal(false);
     incomeAmountCounter();
     props.rerenderTree();
   }
@@ -128,13 +137,15 @@ const Income = (props) => {
               <Modal active={activeModal2} setActive={setActiveModal2}>
                 <div className={s.modal_header}>
                   <input
+                    className={s.input_style}
                     placeholder="Откуда"
-                    value={modalTitle2}
-                    onChange={(e) => setModalTitle2(e.target.value)}
+                    value={inputTitle}
+                    onChange={(e) => setInputTitle(e.target.value)}
                     type="text"
                   />
 
                   <input
+                    className={s.input_style}
                     placeholder="Планируете"
                     value={inputAmount}
                     onChange={(e) => setinputAmount(e.target.value)}
@@ -143,14 +154,25 @@ const Income = (props) => {
 
                   <div className={s.modal_valute}>
                     <div>Валюта</div>
-                    <select onChange={(e) => setOptions(e.target.value)}>
-                      <option value={"RUB"}>RUB</option>
-                      <option value={"KZT"}>KZT</option>
-                      <option value={"EUR"}>EUR</option>
+                    <select
+                      className={s.select_style}
+                      onChange={(e) => setOptions(e.target.value)}
+                    >
+                      <option className={s.opt_style} value={"RUB"}>
+                        RUB
+                      </option>
+                      <option className={s.opt_style} value={"KZT"}>
+                        KZT
+                      </option>
+                      <option className={s.opt_style} value={"EUR"}>
+                        EUR
+                      </option>
                     </select>
                   </div>
-                  <button onClick={addBlock}>Добавить</button>
                 </div>
+                <button className={s.addbtn} onClick={addBlock}>
+                  Добавить
+                </button>
               </Modal>
             </div>
           </Newblock>

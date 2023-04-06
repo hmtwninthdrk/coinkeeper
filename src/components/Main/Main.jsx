@@ -7,6 +7,7 @@ import HeaderInput from "../HeaderInput/HeaderInput";
 import Header from "../Header/Header";
 
 function Main(props) {
+  const[historyActive,setHistoryActive] = useState(false)
   const logInfo = JSON.parse(localStorage.getItem("logInfo"));
 
   if (props.state.currentUser.data.length == 0) {
@@ -20,11 +21,14 @@ function Main(props) {
       <Header />
       <div>
         <HeaderInput
+        historyActive = {historyActive}
+        setHistoryActive = {setHistoryActive}
           data={props.state.currentUser.data}
           // setData={props.state.currentUser.data}
           rerenderTree={props.rerenderTree}
         />
 
+        <div className="mainchapter">
         <div>
           <Income
             title={"Income"}
@@ -39,13 +43,21 @@ function Main(props) {
           />
           <Expenses
             title={"Expenses"}
-            data={props.data}
+            data={props.state.currentUser.data}
             setData={props.setData}
+            rerenderTree={props.rerenderTree}
           />
+        </div>
+        <History 
+        history = {props.history}
+        setHistory = {props.setHistory}
+         historyActive = {historyActive}
+         setHistoryActive = {setHistoryActive}
+        />
         </div>
       </div>
 
-      <History />
+      
     </div>
   );
 }

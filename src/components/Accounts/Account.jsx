@@ -14,12 +14,20 @@ const Account = (props) => {
   const [activeModal, setActiveModal] = useState(false);
   const [value, setValue] = useState("");
   const [modalTitle, setModalTitle] = useState("");
-  const [change, setchange] = useState(false);
   const [deleteOpt, setDeleteOpt] = useState(true);
   const [options, setOptions] = useState("");
   const [ids, setId] = useState("");
   const [amounts, setAmounts] = useState(0);
+
+
   function edits(id) {
+    if (
+      modalTitle !== "" &&
+      value !== "" &&
+      modalTitle !== null &&
+      value !== null &&
+      options !== undefined
+    ) {
     for (let i = 0; i < props.data.length; i++) {
       if (props.data[i].id == id) {
         props.data[i].name = modalTitle;
@@ -28,14 +36,14 @@ const Account = (props) => {
     }
     incomeAmountCounter();
     props.rerenderTree();
-    setchange(true);
     setActiveModal(false);
+  }
   }
 
   function incomeAmountCounter() {
     let counter = 0;
     for (let i = 0; i < props.data.length; i++) {
-      if (props.data[i].title == "Income") {
+      if (props.data[i].title == "Account") {
         counter += parseFloat(props.data[i].amount);
       }
     }
@@ -61,9 +69,9 @@ const Account = (props) => {
       });
       setInputAmount("");
       setModalTitle2("");
+      setActiveModal2(false);
     }
-
-    setActiveModal(false);
+    
   }
 
   return (
@@ -102,10 +110,8 @@ const Account = (props) => {
                 </div>
 
                 <div className={s.block_info}>
-                  <div className={s.block_amount}>0</div>
-                  <div className={s.block_edit}>
-                    {change ? value + " " + item.opt : item.amount + item.opt}
-                  </div>
+                  <div className={s.block_amount}>{item.amount}</div>
+                  <div className={s.block_edit}>{item.opt}</div>
                 </div>
               </div>
             ) : (
@@ -126,27 +132,40 @@ const Account = (props) => {
               <Modal active={activeModal2} setActive={setActiveModal2}>
                 <div className={s.modal_header}>
                   <input
+                    className={s.input_style}
                     placeholder="Где вы планируете хранить деньги"
                     value={modalTitle2}
                     onChange={(e) => setModalTitle2(e.target.value)}
                     type="text"
                   />
                   <input
+                    className={s.input_style}
                     placeholder="Сколько там денег"
                     value={inputAmount}
                     onChange={(e) => setInputAmount(e.target.value)}
-                    type="text"
+                    type="number"
                   />
                   <div className={s.modal_valute}>
                     <div>Валюта</div>
-                    <select onChange={(e) => setOptions(e.target.value)}>
-                      <option value={"RUB"}>RUB</option>
-                      <option value={"KZT"}>KZT</option>
-                      <option value={"EUR"}>EUR</option>
+                    <select
+                      className={s.select_style}
+                      onChange={(e) => setOptions(e.target.value)}
+                    >
+                      <option className={s.opt_style} value={"RUB"}>
+                        RUB
+                      </option>
+                      <option className={s.opt_style} value={"KZT"}>
+                        KZT
+                      </option>
+                      <option className={s.opt_style} value={"EUR"}>
+                        EUR
+                      </option>
                     </select>
                   </div>
-                  Б<button onClick={addBlock}>Добавить</button>
                 </div>
+                <button className={s.addbtn} onClick={addBlock}>
+                  Добавить
+                </button>
               </Modal>
             </div>
           </Newblock>

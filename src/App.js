@@ -42,7 +42,7 @@ function App(props) {
       img: "",
       amount : 0,
       opt:"",
-      inp:"D"
+     
     },
     {
       title:"Expenses",
@@ -51,7 +51,7 @@ function App(props) {
       img: "",
       amount : 0,
       opt:"",
-      inp:"D"
+      
     }
   ]
   const[data,setData] = useState([{
@@ -69,7 +69,7 @@ function App(props) {
     img: "",
     amount : 0,
     opt:"",
-    inp:"D"
+    
 },
 {
   title:"Expenses",
@@ -78,11 +78,17 @@ function App(props) {
   img: "",
   amount : 0,
   opt:"",
-  inp:"D"
+  
 }
 ])
   
-  
+
+const[history,setHistory] = useState([{
+  id:1,
+  from_title:"Стипендия",
+  to_title:"Kaspi",
+  money:100
+}])
   
   
   
@@ -91,7 +97,7 @@ function App(props) {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/main" element={<Main data={data} setData={setData} state = {props.state} defaultData={defaultData} rerenderTree={props.rerenderTree}/>}/>
+        <Route path="/main" element={<Main history = {history} setHistory = {setHistory} data={data} setData={setData} state = {props.state} defaultData={defaultData} rerenderTree={props.rerenderTree}/>}/>
         <Route path='/' element={<SignIn setIsAuth={setIsAuth}/>}/>
         <Route path='/signUp' element={<SignUp/>}/>
       </Routes>

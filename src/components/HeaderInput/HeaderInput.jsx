@@ -3,7 +3,7 @@ import s from "./HeaderInput.module.css";
 const HeaderInput = (props) => {
   const [selectorFrom, setSelectorFrom] = useState("");
   const [selectorTo, setSelectorTo] = useState("");
-
+  
   const [money, setMoney] = useState("");
   let incomeOptions = props.data.map((item) =>
     item.title == "Income" ? <option value={item.name}>{item.name}</option> : ""
@@ -23,6 +23,7 @@ const HeaderInput = (props) => {
     }
 
     props.rerenderTree();
+    props.setHistoryActive(true);
   }
   return (
     <div className={s.HeaderInput}>
