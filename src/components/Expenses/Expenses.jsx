@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 import s from "./Expenses.module.css";
-import editpen from "../../img/edit.png";
-import education from "../../img/educ.png";
 import { v4 as uuidv4 } from "uuid";
-import newblock from "../../img/new.png";
 import Modal from "../Modal/Modal";
 import Newblock from "../New/Newblock";
 const Expenses = (props) => {
@@ -17,7 +14,7 @@ const Expenses = (props) => {
   const [ids, setId] = useState("");
   const [options, setOptions] = useState("");
   const [amounts, setAmounts] = useState(0);
-
+  const [icons, setIcons] = useState("books.png");
   function deleteItems(id){
     for (let i = 0; i < props.data.length; i++) {
       if (props.data[i].id == id) {
@@ -39,6 +36,7 @@ const Expenses = (props) => {
         if (props.data[i].id == id) {
           props.data[i].name = modalTitle;
           props.data[i].amount = parseFloat(value);
+          props.data[i].icons = icons;
         }
       }
       incomeAmountCounter();
@@ -68,9 +66,10 @@ const Expenses = (props) => {
     ) {
       props.data.push({
         title: props.title,
+        icons: icons,
         id: props.data.length + 1,
         name: modalTitle2,
-        img: "",
+        img: icons,
         amount: parseFloat(inputAmount),
         opt: options,
       });
@@ -122,14 +121,14 @@ const Expenses = (props) => {
                 <div>{item.inp}</div>
                 <div className={s.icon_edit}>
                   <img
-                    src={editpen}
+                    src="/img/edit.png"
                     className={s.edit}
                     onClick={() => {
                       setActiveModal(true);
                       setId(item.id);
                     }}
                   />
-                  <img className={s.icon} src={education} />
+                  <img className={s.icon}  src={`/img/${item.icons}`}  />
                 </div>
 
                 <div className={s.block_info}>
@@ -147,13 +146,19 @@ const Expenses = (props) => {
               <div className={s.new_block}>
                 <img
                   onClick={() => setActiveModal2(true)}
-                  src={newblock}
+                  src = "/img/new.png"
                   className={s.newblock}
                 />
               </div>
 
-              <Modal active={activeModal2} setActive={setActiveModal2}>
+              <Modal 
+               defaultIconsIncome={props.defaultIconsIncome}
+               setIcons={setIcons}
+              active={activeModal2} setActive={setActiveModal2}>
+               <div className={s.modal}>
+                <div className={s.modal_left}>
                 <div className={s.modal_header}>
+                  <div className={s.modal_top}>
                   <input
                     className={s.input_style}
                     placeholder="Откуда"
@@ -161,7 +166,8 @@ const Expenses = (props) => {
                     onChange={(e) => setModalTitle2(e.target.value)}
                     type="text"
                   />
-
+                  <img className={s.icons_choose} src={`/img/${icons}`}/>
+                  </div>
                   <input
                     className={s.input_style}
                     placeholder="Планируете"
@@ -191,14 +197,19 @@ const Expenses = (props) => {
                 <button className={s.addbtn} onClick={addBlock}>
                   Добавить
                 </button>
+                </div>
+               </div>
               </Modal>
             </div>
           </Newblock>
         </div>
       </div>
 
-      <Modal active={activeModal} setActive={setActiveModal}>
-        <div className={s.modal_header}>
+      <Modal  defaultIconsIncome={props.defaultIconsIncome}
+              setIcons={setIcons} active={activeModal} setActive={setActiveModal}>
+        <div className={s.modal}>
+          <div className={s.modal_left}>
+          <div className={s.modal_header}>
           <input
           placeholder="Изменить"
           className={s.input_style}
@@ -208,6 +219,8 @@ const Expenses = (props) => {
           />
           
         </div>
+
+        <img className={s.icons_choose} src={`/img/${icons}`} />
         <div className={s.modal_main}>
           <input
           placeholder="Изменить"
@@ -229,6 +242,8 @@ const Expenses = (props) => {
               <button className={s.addbtn} >Удалить все</button>
             </div>
           )}
+        </div>
+          </div>
         </div>
       </Modal>
     </div>

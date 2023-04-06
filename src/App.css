@@ -23,7 +23,8 @@ body{
 
 
 .content{
-  width: 450px;
+  display: flex;
+  width: 620px;
   border-radius:  10px;
   background-color: #0491d1;
   transform: scale(0.5);

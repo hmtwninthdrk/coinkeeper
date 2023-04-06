@@ -1,12 +1,18 @@
 import React from "react";
 import s from "./Modal.module.css";
-import a from "../../img/books.png";
 const Modal = (props) => {
   let defaultIconsIncome = [
     "books.png",
     "credit-card.png",
     "fork.png",
     "monitor.png",
+    "car.png",
+    "educ.png",
+    "graduation-cap.png",
+    "plane.png",
+    "new.png",
+    "shopping-bag.png",
+    "weight.png"
   ];
 
   return (
@@ -19,15 +25,19 @@ const Modal = (props) => {
         onClick={(e) => e.stopPropagation()}
       >
         {props.children}
-      </div>
-      <div className={s.modal_right}>
+        <div className={s.modal_right}>
         <img src="" alt="" />
         <div>
           {defaultIconsIncome.map((item) => (
-            <img src={`/img/${item}`} />
+            <img onClick={(e)=>props.setIcons(item)} className={s.icon_choose} src={`/img/${item}`} />
+            
+            
           ))}
+          
         </div>
       </div>
+      </div>
+      
     </div>
   );
 };
