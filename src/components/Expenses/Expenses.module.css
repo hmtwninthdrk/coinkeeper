@@ -6,34 +6,33 @@ input {outline:none;}
 
 
 .select_style{
-    -moz-appearance: none;
-    -webkit-appearance: none;
-    border: none;
-    position: relative;
-    outline: none;
-    font-size: 18px;
-    padding: 5px;
-    background: rgba(0,0,0,0);
-    color: #fff;
-    padding-right: 40px;
-    
-    
-    }
-    .select_style:after{
-      content: "";
-      display: block;
-      width: 25px;
-      height: 25px;
-      position: absolute;
-      right: 5px;
-      top: 5px;
-    }
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  border: none;
+  position: relative;
+  outline: none;
+  font-size: 18px;
+  padding: 5px;
+  background: rgba(0,0,0,0);
+  color: #fff;
+  padding-right: 40px;
   
-  .opt_style{
-    color: #000;
-    font-size: 18px;
+  
   }
-  
+  .select_style:after{
+    content: "";
+    display: block;
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+  }
+
+.opt_style{
+  color: #000;
+  font-size: 18px;
+}
 
 
 
@@ -45,38 +44,61 @@ input {outline:none;}
 
 .header{
     padding: 20px;
+    align-items: center;
     display: flex;
-    background-color: aliceblue;
+    justify-content: space-between;
+    background-color: rgb(237, 234, 234);
     border-bottom: 2px solid #c8c6c6;
 }
 
 .title{
+    font-size: 18px;
+    text-transform: uppercase;
     margin-right: 100px;
+}
+
+.data{
+    margin-top: 5px;
+    font-size: 12px;
 }
 
 .budget{
     display: flex;
+    width: 210px;
+    flex-wrap: wrap;
 }
 
 .status{
+    font-size: 18px;
+    text-align: right;
     margin-right: 25px;
+}
+
+.stat_text{
+    font-size: 12px;
 }
 
 .main{
     height: 200px;
+    background-color: #fff;
 }
 
 .main_inner{
     display: flex;
-    align-items: center;
-    
+      
+}
+
+.block_info{
+  text-align: center;
 }
 
 .block_amount{
-    text-align: center;
+    width: 100%;
 }
 
+
 .main_block{
+    text-align: center;
     padding: 20px;
     margin-right: 50px;
 }
@@ -120,7 +142,8 @@ input {outline:none;}
 
 .newblock{
     width: 50px;
-    padding-bottom: 24px;
+    padding-left: 10px;
+    margin-top: 60px;
     height: 50px;
 }
 
@@ -135,6 +158,7 @@ input {outline:none;}
     font-size: 18px;
 }
 
+
 .modal_valute{
     padding: 10px;
     display: flex;
@@ -147,8 +171,9 @@ input {outline:none;}
 }
 
 .addbtn{
+    margin-top: 3px;
     width: 100%;
-    background-color: #03bded;
+    background-color: #05d398;
     height: 80px;
     font-weight: 400;
     font-size: 25px;

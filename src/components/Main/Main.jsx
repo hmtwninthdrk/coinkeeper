@@ -35,6 +35,7 @@ function Main(props) {
           <div>
             <Income
               title={"Income"}
+              history={props.state.currentUser.history}
               data={props.state.currentUser.data}
               rerenderTree={props.rerenderTree} /*setData={props.setData}*/
             />

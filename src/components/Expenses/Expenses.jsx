@@ -18,6 +18,15 @@ const Expenses = (props) => {
   const [options, setOptions] = useState("");
   const [amounts, setAmounts] = useState(0);
 
+  function deleteItems(id){
+    for (let i = 0; i < props.data.length; i++) {
+      if (props.data[i].id == id) {
+        props.data[i] = "";
+      }
+      setActiveModal(false);
+    }
+  }
+
   function edits(id) {
     if (
       modalTitle !== "" &&
@@ -78,28 +87,28 @@ const Expenses = (props) => {
       <div className={s.header}>
         <div className={s.title}>
           <div>Расходы</div>
-          <div>март 2023</div>
+          <div className={s.data}>март 2023</div>
         </div>
 
         <div className={s.budget}>
           <div className={s.status}>
             <div>0 T</div>
-            <div>Потрачено</div>
+            <div  className={s.stat_text}>Потрачено</div>
           </div>
 
           <div className={s.status}>
             <div>{amounts}</div>
-            <div>Бюджет доходов</div>
+            <div  className={s.stat_text}>Бюджет доходов</div>
           </div>
 
           <div className={s.status}>
             <div>0 T</div>
-            <div>В планах</div>
+            <div  className={s.stat_text}>В планах</div>
           </div>
 
           <div className={s.status}>
             <div>{"0 "}</div>
-            <div>прогноз расходов</div>
+            <div  className={s.stat_text}>прогноз расходов</div>
           </div>
         </div>
       </div>
@@ -124,8 +133,8 @@ const Expenses = (props) => {
                 </div>
 
                 <div className={s.block_info}>
-                  <div className={s.block_amount}>{item.amount}</div>
-                  <div className={s.block_edit}>{item.opt}</div>
+                  <div className={s.block_amount}>{item.amount + " " + item.opt}</div>
+                  <div className={s.block_edit}>0 T</div>
                 </div>
               </div>
             ) : (
@@ -191,15 +200,18 @@ const Expenses = (props) => {
       <Modal active={activeModal} setActive={setActiveModal}>
         <div className={s.modal_header}>
           <input
+          placeholder="Изменить"
+          className={s.input_style}
             value={modalTitle}
             onChange={(e) => setModalTitle(e.target.value)}
             type="text"
           />
-          <div className={s.modal_title}>Стипендия</div>
-          <img className={s.icon} src={education} />
+          
         </div>
         <div className={s.modal_main}>
           <input
+          placeholder="Изменить"
+          className={s.input_style}
             value={value}
             onChange={(e) => setValue(e.target.value)}
             type="number"
@@ -207,14 +219,14 @@ const Expenses = (props) => {
 
           {deleteOpt ? (
             <div>
-              <button onClick={() => edits(ids)}>Изменить</button>
-              <button onClick={(e) => setDeleteOpt(false)}>Удалить</button>
+              <button className={s.addbtn} onClick={() => edits(ids)}>Изменить</button>
+              <button className={s.addbtn} onClick={(e) => setDeleteOpt(false)}>Удалить</button>
             </div>
           ) : (
             <div>
-              <button onClick={(e) => setDeleteOpt(true)}>Отмена</button>
-              <button>Сохранить историю</button>
-              <button>Удалить все</button>
+              <button className={s.addbtn} onClick={(e) => setDeleteOpt(true)}>Отмена</button>
+              <button className={s.addbtn} onClick={()=>deleteItems(ids)} >Сохранить историю</button>
+              <button className={s.addbtn} >Удалить все</button>
             </div>
           )}
         </div>
