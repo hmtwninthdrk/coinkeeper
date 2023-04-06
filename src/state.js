@@ -7,7 +7,8 @@ let state = {
         password : "",
         data:[],
         history: []
-    }
+    },
+    
     
 }
 

@@ -37,6 +37,7 @@ function Main(props) {
               title={"Income"}
               history={props.state.currentUser.history}
               data={props.state.currentUser.data}
+              defaultIconsIncome={props.state.defaultIconsIncome}
               rerenderTree={props.rerenderTree} /*setData={props.setData}*/
             />
             <Account
