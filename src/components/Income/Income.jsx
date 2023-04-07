@@ -14,7 +14,13 @@ const Income = (props) => {
   const [ids, setId] = useState(""); // айдишка
   const [amounts, setAmounts] = useState(0);
 
-  const [icons, setIcons] = useState(<img className={s.icon} src="/img/books.png"/>);
+  const [icons, setIcons] = useState("credit-card.png");
+  let incomeMoney = 0;
+  for (let i = 0; i < props.data.length; i++) {
+    if (props.data[i].title === "Income") {
+      incomeMoney += props.data[i].count;
+    }
+  }
 
   function deleteItems(id) {
     for (let i = 0; i < props.data.length; i++) {
@@ -36,7 +42,7 @@ const Income = (props) => {
       for (let i = 0; i < props.data.length; i++) {
         if (props.data[i].id == id) {
           props.data[i].name = modalTitle;
-          props.data[i].amount = +value;
+          props.data[i].amount = value;
           props.data[i].icons = icons;
         }
       }
@@ -72,6 +78,7 @@ const Income = (props) => {
         id: props.data.length + 1,
         name: inputTitle,
         amount: inputAmount,
+        count: 0,
         opt: options,
       });
 
@@ -93,7 +100,7 @@ const Income = (props) => {
 
         <div className={s.budget}>
           <div className={s.status}>
-            <div>0 T</div>
+            <div>{incomeMoney} T</div>
             <div className={s.stat_text}>Получено</div>
           </div>
 
@@ -109,7 +116,6 @@ const Income = (props) => {
           {props.data.map((item) =>
             item.title === "Income" ? (
               <div key={item.id} className={s.main_block}>
-                <img src={icons} alt="" />
                 <div className={s.block_title}>{item.name}</div>
                 <div>{item.inp}</div>
                 <div className={s.icon_edit}>
@@ -121,12 +127,12 @@ const Income = (props) => {
                       setId(item.id);
                     }}
                   />
+
                   <img className={s.icon} src={`/img/${item.icons}`} />
-                  
                 </div>
 
                 <div className={s.block_info}>
-                  <div className={s.block_edit}>0 T</div>
+                  <div className={s.block_edit}>{item.count}</div>
                   <div className={s.block_amount}>
                     {item.amount + " " + item.opt}
                   </div>
@@ -156,19 +162,17 @@ const Income = (props) => {
                 <div className={s.modal}>
                   <div className={s.modal_left}>
                     <div className={s.modal_header}>
-                      
-                    <div className={s.modal_top}>
-                  <input
-                    className={s.input_style}
-                    placeholder="Откуда"
-                    value={inputTitle}
-                    onChange={(e) => setInputTitle(e.target.value)}
-                    type="text"
-                  />
-                  <img className={s.icons_choose} src={`/img/${icons}`}/>
-                  </div>
+                      <div className={s.modal_top}>
+                        <input
+                          className={s.input_style}
+                          placeholder="Откуда"
+                          value={inputTitle}
+                          onChange={(e) => setInputTitle(e.target.value)}
+                          type="text"
+                        />
+                        <img className={s.icons_choose} src={`/img/${icons}`} />
+                      </div>
 
-                     
                       <input
                         className={s.input_style}
                         placeholder="Планируете"
@@ -176,8 +180,6 @@ const Income = (props) => {
                         onChange={(e) => setinputAmount(e.target.value)}
                         type="number"
                       />
-                     
-                     
 
                       <div className={s.modal_valute}>
                         <div>Валюта</div>
@@ -218,17 +220,17 @@ const Income = (props) => {
         <div className={s.modal}>
           <div className={s.modal_left}>
             <div className={s.modal_header}>
-             <div className={s.modal_top}>
-             <input
-                placeholder="Изменить"
-                className={s.input_style}
-                value={modalTitle}
-                onChange={(e) => setModalTitle(e.target.value)}
-                type="text"
-              />
+              <div className={s.modal_top}>
+                <input
+                  placeholder="Изменить"
+                  className={s.input_style}
+                  value={modalTitle}
+                  onChange={(e) => setModalTitle(e.target.value)}
+                  type="text"
+                />
 
-              <img className={s.icons_choose} src={`/img/${icons}`} />
-             </div>
+                <img className={s.icons_choose} src={`/img/${icons}`} />
+              </div>
             </div>
             <div className={s.modal_main}>
               <input

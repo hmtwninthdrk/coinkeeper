@@ -15,10 +15,10 @@ const HeaderInput = (props) => {
   function transfer() {
     for (let i = 0; i < props.data.length; i++) {
       if (selectorFrom == props.data[i].name) {
-        props.data[i].amount = props.data[i].amount - money;
+        props.data[i].count = props.data[i].count + parseFloat(money);
       }
       if (selectorTo == props.data[i].name) {
-        props.data[i].amount = props.data[i].amount + parseFloat(money);
+        props.data[i].count = props.data[i].count + parseFloat(money);
       }
     }
     console.log(props.data);
@@ -29,6 +29,7 @@ const HeaderInput = (props) => {
       to_title: selectorTo,
       money: money,
     });
+
     props.rerenderTree();
   }
 

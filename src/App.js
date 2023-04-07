@@ -6,9 +6,9 @@ import Main from './components/Main/Main';
 import SignIn from './components/SignIn/SignIn';
 import SignUp from './components/SignUp/SignUp';
 
-import card from '../src/components/credit-card.png';
 
 function App(props) {
+  console.log(props.state.currentUser.history)
   const [isAuth, setIsAuth] = useState(false)
   const logInfo = JSON.parse(localStorage.getItem("logInfo"))
     if(!logInfo)localStorage.setItem(
@@ -30,28 +30,29 @@ function App(props) {
    
   const defaultData = [{
       title:"Income",
-      icons:card,
+      icons:"credit-card.png",
       id:1,
       name: "Стипендия",
       amount : 0,
+      count: 0,
       opt:""
     },
     {
       title:"Account",
-      icons:"",
+      icons:"credit-card.png",
       id:2,
       name: "Kaspi",
-      img: "",
+      count: 0,
       amount : 0,
       opt:"",
      
     },
     {
       title:"Expenses",
-      icons:"",
+      icons:"books.png",
       id:3,
       name: "Food",
-      img: "",
+      count: 0,
       amount : 0,
       opt:"",
       

@@ -13,10 +13,16 @@ const Account = (props) => {
   const [deleteOpt, setDeleteOpt] = useState(true);
   const [options, setOptions] = useState("");
   const [ids, setId] = useState("");
-  const [amounts, setAmounts] = useState(0);
+
   const [icons, setIcons] = useState("books.png");
 
-  function deleteItems(id){
+  let haveMoney = 0;
+  for (let i = 0; i < props.data.length; i++) {
+    if (props.data[i].title === "Account") {
+      haveMoney += props.data[i].count;
+    }
+  }
+  function deleteItems(id) {
     for (let i = 0; i < props.data.length; i++) {
       if (props.data[i].id == id) {
         props.data[i] = "";
@@ -40,7 +46,7 @@ const Account = (props) => {
           props.data[i].icons = icons;
         }
       }
-      
+
       incomeAmountCounter();
       props.rerenderTree();
       setActiveModal(false);
@@ -54,8 +60,6 @@ const Account = (props) => {
         counter += parseFloat(props.data[i].amount);
       }
     }
-
-    setAmounts(counter);
   }
 
   function addBlock() {
@@ -70,8 +74,9 @@ const Account = (props) => {
         title: props.title,
         id: props.data.length + 1,
         name: modalTitle2,
-        img: icons,
+        icons: icons,
         amount: parseFloat(inputAmount),
+        count: 0,
         opt: options,
       });
       console.log(props.data);
@@ -93,8 +98,8 @@ const Account = (props) => {
 
         <div className={s.budget}>
           <div className={s.status}>
-            <div>{amounts}</div>
-            <div className={s.stat_text} >В наличий</div>
+            <div>{haveMoney}</div>
+            <div className={s.stat_text}>В наличий</div>
           </div>
         </div>
       </div>
@@ -115,12 +120,14 @@ const Account = (props) => {
                       setId(item.id);
                     }}
                   />
-                   <img className={s.icon}  src={`/img/${item.icons}`}  />
+                  <img className={s.icon} src={`/img/${item.icons}`} />
                 </div>
 
                 <div className={s.block_info}>
-             
-                  <div className={s.block_amount}>{item.amount+ " " + item.opt}</div>
+                  <div className={s.block_edit}>{item.count}</div>
+                  <div className={s.block_amount}>
+                    {item.amount + " " + item.opt}
+                  </div>
                 </div>
               </div>
             ) : (
@@ -129,65 +136,62 @@ const Account = (props) => {
           )}
 
           <Newblock>
-            
             <div>
               <div className={s.new_block}>
                 <img
                   onClick={() => setActiveModal2(true)}
-                  src = "/img/new.png"
+                  src="/img/new.png"
                   className={s.newblock}
                 />
               </div>
 
-              <Modal 
-              
-              defaultIconsIncome={props.defaultIconsIncome}
-              setIcons={setIcons}
-              active={activeModal2} setActive={setActiveModal2}>
+              <Modal
+                defaultIconsIncome={props.defaultIconsIncome}
+                setIcons={setIcons}
+                active={activeModal2}
+                setActive={setActiveModal2}
+              >
                 <div className={s.modal}>
                   <div className={s.modal_left}>
-                  <div className={s.modal_header}>
-                
-
-
-                  <div className={s.modal_top}>
-                  <input
-                    className={s.input_style}
-                    placeholder="Откуда"
-                    value={modalTitle2}
-                    onChange={(e) =>setModalTitle2(e.target.value)}
-                    type="text"
-                  />
-                  <img className={s.icons_choose} src={`/img/${icons}`}/>
-                  </div>
-                  <input
-                    className={s.input_style}
-                    placeholder="Сколько там денег"
-                    value={inputAmount}
-                    onChange={(e) => setInputAmount(e.target.value)}
-                    type="number"
-                  />
-                  <div className={s.modal_valute}>
-                    <div>Валюта</div>
-                    <select
-                      className={s.select_style}
-                      onChange={(e) => setOptions(e.target.value)}
-                    >
-                      <option className={s.opt_style} value={"RUB"}>
-                        RUB
-                      </option>
-                      <option className={s.opt_style} value={"KZT"}>
-                        KZT
-                      </option>
-                      <option className={s.opt_style} value={"EUR"}>
-                        EUR
-                      </option>
-                    </select>
-                  </div>
-                </div>
-                <button className={s.addbtn} onClick={addBlock}>
-                  Добавить
-                </button>
+                    <div className={s.modal_header}>
+                      <div className={s.modal_top}>
+                        <input
+                          className={s.input_style}
+                          placeholder="Откуда"
+                          value={modalTitle2}
+                          onChange={(e) => setModalTitle2(e.target.value)}
+                          type="text"
+                        />
+                        <img className={s.icons_choose} src={`/img/${icons}`} />
+                      </div>
+                      <input
+                        className={s.input_style}
+                        placeholder="Сколько там денег"
+                        value={inputAmount}
+                        onChange={(e) => setInputAmount(e.target.value)}
+                        type="number"
+                      />
+                      <div className={s.modal_valute}>
+                        <div>Валюта</div>
+                        <select
+                          className={s.select_style}
+                          onChange={(e) => setOptions(e.target.value)}
+                        >
+                          <option className={s.opt_style} value={"RUB"}>
+                            RUB
+                          </option>
+                          <option className={s.opt_style} value={"KZT"}>
+                            KZT
+                          </option>
+                          <option className={s.opt_style} value={"EUR"}>
+                            EUR
+                          </option>
+                        </select>
+                      </div>
+                    </div>
+                    <button className={s.addbtn} onClick={addBlock}>
+                      Добавить
+                    </button>
                   </div>
                 </div>
               </Modal>
@@ -196,45 +200,62 @@ const Account = (props) => {
         </div>
       </div>
 
-      <Modal  defaultIconsIncome={props.defaultIconsIncome}
-              setIcons={setIcons} active={activeModal} setActive={setActiveModal}>
+      <Modal
+        defaultIconsIncome={props.defaultIconsIncome}
+        setIcons={setIcons}
+        active={activeModal}
+        setActive={setActiveModal}
+      >
         <div className={s.modal}>
           <div className={s.modal_left}>
-       <div className={s.modal_top}>
-       <div className={s.modal_header}>
-          <input
-          placeholder="Изменить"
-          className={s.input_style}
-            value={modalTitle}
-            onChange={(e) => setModalTitle(e.target.value)}
-            type="text"
-          />
-          
-        </div>
-         <img className={s.icons_choose} src={`/img/${icons}`} />
-       </div>
-        <div className={s.modal_main}>
-          <input
-          placeholder="Изменить"
-          className={s.input_style}
-            value={value}
-            onChange={(e) => setValue(e.target.value)}
-            type="number"
-          />
+            <div className={s.modal_top}>
+              <div className={s.modal_header}>
+                <input
+                  placeholder="Изменить"
+                  className={s.input_style}
+                  value={modalTitle}
+                  onChange={(e) => setModalTitle(e.target.value)}
+                  type="text"
+                />
+              </div>
+              <img className={s.icons_choose} src={`/img/${icons}`} />
+            </div>
+            <div className={s.modal_main}>
+              <input
+                placeholder="Изменить"
+                className={s.input_style}
+                value={value}
+                onChange={(e) => setValue(e.target.value)}
+                type="number"
+              />
 
-          {deleteOpt ? (
-            <div>
-              <button className={s.addbtn} onClick={() => edits(ids)}>Изменить</button>
-              <button className={s.addbtn} onClick={(e) => setDeleteOpt(false)}>Удалить</button>
+              {deleteOpt ? (
+                <div>
+                  <button className={s.addbtn} onClick={() => edits(ids)}>
+                    Изменить
+                  </button>
+                  <button
+                    className={s.addbtn}
+                    onClick={(e) => setDeleteOpt(false)}
+                  >
+                    Удалить
+                  </button>
+                </div>
+              ) : (
+                <div>
+                  <button
+                    className={s.addbtn}
+                    onClick={(e) => setDeleteOpt(true)}
+                  >
+                    Отмена
+                  </button>
+                  <button className={s.addbtn} onClick={() => deleteItems(ids)}>
+                    Сохранить историю
+                  </button>
+                  <button className={s.addbtn}>Удалить все</button>
+                </div>
+              )}
             </div>
-          ) : (
-            <div>
-              <button className={s.addbtn} onClick={(e) => setDeleteOpt(true)}>Отмена</button>
-              <button className={s.addbtn} onClick={()=>deleteItems(ids)}>Сохранить историю</button>
-              <button className={s.addbtn}>Удалить все</button>
-            </div>
-          )}
-        </div>
           </div>
         </div>
       </Modal>
