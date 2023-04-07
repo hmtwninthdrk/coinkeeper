@@ -145,13 +145,13 @@ const Expenses = (props) => {
                 </div>
 
                 <div className={s.block_info}>
-                  <div className={s.block_edit}>{item.count}</div>
+                  <div className={s.block_edit}>{item.count} T</div>
                   <div
                     className={`${item.amount == 0 ? s.disable : ""} ${
                       s.block_amount
                     }`}
                   >
-                    {item.amount + " " + item.opt}
+                    {item.amount + " " + item.opt} T
                   </div>
                 </div>
               </div>
@@ -203,6 +203,9 @@ const Expenses = (props) => {
                           className={s.select_style}
                           onChange={(e) => setOptions(e.target.value)}
                         >
+                          <option selected disabled className={s.opt_style} >
+                          ▼
+                          </option>
                           <option className={s.opt_style} value={"RUB"}>
                             RUB
                           </option>
@@ -249,6 +252,7 @@ const Expenses = (props) => {
             <img className={s.icons_choose} src={`/img/${icons}`} />
               </div>
             <div className={s.modal_main}>
+              <div className={s.modal_header}>
               <input
                 placeholder="Изменить"
                 className={s.input_style}
@@ -256,6 +260,8 @@ const Expenses = (props) => {
                 onChange={(e) => setValue(e.target.value)}
                 type="number"
               />
+              </div>
+              
 
               {deleteOpt ? (
                 <div>
@@ -278,9 +284,9 @@ const Expenses = (props) => {
                     Отмена
                   </button>
                   <button className={s.addbtn} onClick={() => deleteItems(ids)}>
-                    Сохранить историю
+                  Удалить все
                   </button>
-                  <button className={s.addbtn}>Удалить все</button>
+                  
                 </div>
               )}
             </div>

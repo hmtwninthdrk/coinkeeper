@@ -124,11 +124,12 @@ const Account = (props) => {
                 </div>
 
                 <div className={s.block_info}>
-                  <div className={s.block_edit}>{item.count}</div>
+                  <div className={s.block_edit}>{item.count} T</div>
                   <div
                     className={`${item.amount == 0 ? s.disable : ""} ${
                       s.block_amount
                     }`}
+                    T
                   >
                     {item.amount + " " + item.opt}
                   </div>
@@ -181,7 +182,10 @@ const Account = (props) => {
                           className={s.select_style}
                           onChange={(e) => setOptions(e.target.value)}
                         >
-                          <option className={s.opt_style} value={"RUB"}>
+                          <option selected disabled className={s.opt_style} >
+                          ▼
+                          </option>
+                          <option  className={s.opt_style} value={"RUB"}>
                             RUB
                           </option>
                           <option className={s.opt_style} value={"KZT"}>
@@ -225,6 +229,7 @@ const Account = (props) => {
               <img className={s.icons_choose} src={`/img/${icons}`} />
             </div>
             <div className={s.modal_main}>
+              <div className={s.modal_header}>
               <input
                 placeholder="Изменить"
                 className={s.input_style}
@@ -232,6 +237,8 @@ const Account = (props) => {
                 onChange={(e) => setValue(e.target.value)}
                 type="number"
               />
+              </div>
+              
 
               {deleteOpt ? (
                 <div>
@@ -254,9 +261,9 @@ const Account = (props) => {
                     Отмена
                   </button>
                   <button className={s.addbtn} onClick={() => deleteItems(ids)}>
-                    Сохранить историю
+                  Удалить все
                   </button>
-                  <button className={s.addbtn}>Удалить все</button>
+                  
                 </div>
               )}
             </div>

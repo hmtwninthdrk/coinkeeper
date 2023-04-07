@@ -192,6 +192,9 @@ const Income = (props) => {
                           className={s.select_style}
                           onChange={(e) => setOptions(e.target.value)}
                         >
+                          <option selected disabled className={s.opt_style} >
+                          ▼
+                          </option>
                           <option className={s.opt_style} value={"RUB"}>
                             RUB
                           </option>
@@ -223,8 +226,9 @@ const Income = (props) => {
       >
         <div className={s.modal}>
           <div className={s.modal_left}>
-            <div className={s.modal_header}>
+            
               <div className={s.modal_top}>
+              <div className={s.modal_header}>
                 <input
                   placeholder="Изменить"
                   className={s.input_style}
@@ -233,10 +237,12 @@ const Income = (props) => {
                   type="text"
                 />
 
-                <img className={s.icons_choose} src={`/img/${icons}`} />
+                
               </div>
+              <img className={s.icons_choose} src={`/img/${icons}`} />
             </div>
             <div className={s.modal_main}>
+              <div className={s.modal_header}>
               <input
                 placeholder="Изменить"
                 className={s.input_style}
@@ -244,6 +250,8 @@ const Income = (props) => {
                 onChange={(e) => setValue(e.target.value)}
                 type="number"
               />
+              </div>
+              
 
               {deleteOpt ? (
                 <div>
@@ -266,9 +274,9 @@ const Income = (props) => {
                     Отмена
                   </button>
                   <button className={s.addbtn} onClick={() => deleteItems(ids)}>
-                    Сохранить историю
+                    Удалить все
                   </button>
-                  <button className={s.addbtn}>Удалить все</button>
+                  
                 </div>
               )}
             </div>

@@ -95,7 +95,7 @@ const HeaderInput = (props) => {
                 setSelectorFrom(e.target.value);
               }}
             >
-              <option className={s.inp_opt} value="asd" selected>
+              <option className={s.inp_opt} value="asd" disabled selected>
                 Выбрать
               </option>
               {incomeOptions}
@@ -110,7 +110,7 @@ const HeaderInput = (props) => {
                 setSelectorTo(e.target.value);
               }}
             >
-              <option className={s.inp_opt} value="asd" selected>
+              <option className={s.inp_opt} value="asd" disabled selected>
                 Выбрать
               </option>
               {props.data.map((item) =>
@@ -146,7 +146,7 @@ const HeaderInput = (props) => {
                 setSelectorFrom(e.target.value);
               }}
             >
-              <option className={s.inp_opt} value="asd" selected>
+              <option className={s.inp_opt} value="asd" disabled selected>
                 Выбрать
               </option>
               {props.data.map((item) =>
@@ -167,7 +167,7 @@ const HeaderInput = (props) => {
                 setSelectorTo(e.target.value);
               }}
             >
-              <option className={s.inp_opt} value="asd" selected>
+              <option className={s.inp_opt} value="asd" disabled selected>
                 Выбрать
               </option>
               {props.data.map((item) =>

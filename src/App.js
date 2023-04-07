@@ -35,7 +35,7 @@ function App(props) {
       name: "Стипендия",
       amount : 0,
       count: 0,
-      opt:""
+      opt:"KZT"
     },
     {
       title:"Account",
@@ -44,7 +44,7 @@ function App(props) {
       name: "Kaspi",
       count: 0,
       amount : 0,
-      opt:"",
+      opt:"KZT",
      
     },
     {
@@ -54,7 +54,7 @@ function App(props) {
       name: "Food",
       count: 0,
       amount : 0,
-      opt:"",
+      opt:"KZT",
       
     }
   ]

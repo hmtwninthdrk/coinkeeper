@@ -78,12 +78,13 @@ input {outline:none;}
 }
 
 .main{
-    height: 200px;
+    height: auto;
     background-color: #fff;
 }
 
 .main_inner{
     display: flex;
+    flex-wrap: wrap;
 }
 
 .block_info{
@@ -140,6 +141,8 @@ input {outline:none;}
 
 .newblock{
     width: 70px;
+    margin-top: 55px;
+    margin-left: 15px;
     padding-left: 10px;
     margin-top: 55px;
     height: 70px;
