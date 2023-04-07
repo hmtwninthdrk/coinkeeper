@@ -20,6 +20,7 @@
 .formtext{
     font-size: 20px;
     padding-bottom: 5px;
+    margin-right: 5px;
     text-align: center;
     padding-left: 5px;
     display: flex;
@@ -30,12 +31,13 @@
   
     -moz-appearance: none;
     -webkit-appearance: none;
-    border: 1px solid gray;
+    border: 0;
     position: relative;
     outline: none;
+    text-align: center;
     font-size: 18px;
     padding: 5px;
-    background: rgba(0,0,0,0);
+    background-color: rgb(189, 231, 255);;
     color: #000000;
     padding-right: 40px;
     
@@ -53,7 +55,7 @@
     }
   
     .inp_opt{
-      
+    
     color: #000;
     font-size: 18px;
   }
