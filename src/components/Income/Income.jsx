@@ -63,7 +63,7 @@ const Income = (props) => {
 
     setAmounts(counter);
   }
-  debugger;
+
   function addBlock() {
     if (
       inputTitle !== "" &&

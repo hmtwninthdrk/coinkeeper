@@ -43,6 +43,37 @@ const HeaderInput = (props) => {
     }
   }
 
+  function transferFromAccount() {
+    if (
+      money != "" &&
+      selectorFrom != "" &&
+      selectorTo != "" &&
+      money !== null &&
+      selectorFrom !== null &&
+      selectorTo !== null
+    ) {
+      for (let i = 0; i < props.data.length; i++) {
+        if (selectorFrom == props.data[i].name) {
+          props.data[i].count = props.data[i].count + parseFloat(money);
+        }
+        if (selectorTo == props.data[i].name) {
+          props.data[i].count = props.data[i].count + parseFloat(money);
+        }
+      }
+
+      props.history.push({
+        id: props.history.length + 1,
+        from_title: selectorFrom,
+        to_title: selectorTo,
+        status: true,
+        money: parseFloat("-" + money),
+      });
+
+      setMoney("");
+      props.rerenderTree();
+    }
+  }
+
   const handleKeyUp = (e) => {
     if (e.key == "Enter") transfer();
   };
@@ -64,7 +95,7 @@ const HeaderInput = (props) => {
                 setSelectorFrom(e.target.value);
               }}
             >
-              <option className={s.inp_opt} value="asd" selected disabled>
+              <option className={s.inp_opt} value="asd" selected>
                 Выбрать
               </option>
               {incomeOptions}
@@ -79,7 +110,7 @@ const HeaderInput = (props) => {
                 setSelectorTo(e.target.value);
               }}
             >
-              <option className={s.inp_opt} value="asd" selected disabled>
+              <option className={s.inp_opt} value="asd" selected>
                 Выбрать
               </option>
               {props.data.map((item) =>
@@ -114,7 +145,7 @@ const HeaderInput = (props) => {
                 setSelectorFrom(e.target.value);
               }}
             >
-              <option className={s.inp_opt} value="asd" selected disabled>
+              <option className={s.inp_opt} value="asd" selected>
                 Выбрать
               </option>
               {props.data.map((item) =>
@@ -135,7 +166,7 @@ const HeaderInput = (props) => {
                 setSelectorTo(e.target.value);
               }}
             >
-              <option className={s.inp_opt} value="asd" selected disabled>
+              <option className={s.inp_opt} value="asd" selected>
                 Выбрать
               </option>
               {props.data.map((item) =>
@@ -154,7 +185,7 @@ const HeaderInput = (props) => {
               onChange={(e) => setMoney(e.target.value)}
               onKeyUp={(e) => handleKeyUp(e)}
             />
-            <button className={s.btn} onClick={transfer}>
+            <button className={s.btn} onClick={transferFromAccount}>
               DO IT
             </button>
           </div>
