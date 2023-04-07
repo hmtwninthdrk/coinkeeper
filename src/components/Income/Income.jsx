@@ -105,7 +105,7 @@ const Income = (props) => {
           </div>
 
           <div className={s.status}>
-            <div>{amounts}T</div>
+            <div>{amounts} T</div>
             <div className={s.stat_text}>Бюджет доходов</div>
           </div>
         </div>
@@ -132,7 +132,7 @@ const Income = (props) => {
                 </div>
 
                 <div className={s.block_info}>
-                  <div className={s.block_edit}>{item.count} T</div>
+                  <div className={s.block_edit}>{item.count} {item.opt}</div>
                   <div
                     className={`${item.amount == 0 ? s.disable : ""} ${
                       s.block_amount

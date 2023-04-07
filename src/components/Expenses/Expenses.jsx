@@ -145,7 +145,7 @@ const Expenses = (props) => {
                 </div>
 
                 <div className={s.block_info}>
-                  <div className={s.block_edit}>{item.count} T</div>
+                  <div className={s.block_edit}>{item.count} {item.opt}</div>
                   <div
                     className={`${item.amount == 0 ? s.disable : ""} ${
                       s.block_amount
