@@ -8,6 +8,15 @@ let state = {
         data:[],
         history: []
     },
+
+    deleteHistory(id){
+        for(let i = 0; i<this.currentUser.history.length;i++){
+            if(id == this.currentUser.history[i.id]){
+                this.currentUser.history.splice(i,1);
+            }
+        }
+
+    }
     
     
 }

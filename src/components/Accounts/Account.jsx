@@ -125,7 +125,11 @@ const Account = (props) => {
 
                 <div className={s.block_info}>
                   <div className={s.block_edit}>{item.count}</div>
-                  <div className={s.block_amount}>
+                  <div
+                    className={`${item.amount == 0 ? s.disable : ""} ${
+                      s.block_amount
+                    }`}
+                  >
                     {item.amount + " " + item.opt}
                   </div>
                 </div>

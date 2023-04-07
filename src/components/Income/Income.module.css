@@ -4,6 +4,9 @@ input::-webkit-inner-spin-button {
 }
 input {outline:none;} 
 
+.disable {
+    display: none;
+}
 
 .select_style{
   -moz-appearance: none;

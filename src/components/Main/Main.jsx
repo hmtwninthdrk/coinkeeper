@@ -51,7 +51,10 @@ function Main(props) {
               rerenderTree={props.rerenderTree}
             />
           </div>
-          <History history={props.state.currentUser.history} />
+          <History
+            history={props.state.currentUser.history}
+            rerenderTree={props.rerenderTree}
+          />
         </div>
       </div>
     </div>
