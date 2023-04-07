@@ -12,7 +12,13 @@ const Modal = (props) => {
     "plane.png",
     "new.png",
     "shopping-bag.png",
-    "weight.png"
+    "weight.png",
+    "game.png",
+    "shirt.png",
+    "medicine.png",
+    "music.png",
+    "bus.png",
+    "pet.png"
   ];
 
   return (

@@ -18,6 +18,12 @@ function Main(props) {
 
   return (
     <div className="appmain">
+      <img className="dollars1" src="/img/dollars.png"/>
+      <img className="dollars2" src="/img/dollars.png"/>
+      <img className="dollars3" src="/img/dollars.png"/>
+      <img className="dollars4" src="/img/dollars.png"/>
+      <img className="dollars5" src="/img/dollars.png"/>
+      
       <Header
         isAuth={props.isAuth}
         setIsAuth={props.setIsAuth}

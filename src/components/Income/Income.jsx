@@ -128,11 +128,11 @@ const Income = (props) => {
                     }}
                   />
 
-                  <img className={s.icon} src={`/img/${item.icons}`} />
+                 <div className={item.count>item.amount? s.redcircle:s.circle}> <img className={s.icon} src={`/img/${item.icons}`} /></div>
                 </div>
 
                 <div className={s.block_info}>
-                  <div className={s.block_edit}>{item.count}</div>
+                  <div className={s.block_edit}>{item.count} T</div>
                   <div
                     className={`${item.amount == 0 ? s.disable : ""} ${
                       s.block_amount

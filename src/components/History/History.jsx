@@ -11,7 +11,18 @@ const History = (props) => {
       }
     }
     props.rerenderTree();
-  }
+  }Date.prototype.getWeek = function() {
+    var onejan = new Date(this.getFullYear(), 0, 1);
+    return Math.ceil((((this - onejan) / 86400000) + onejan.getDay() + 1) / 7);
+}
+var dayNames = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
+  let weekNumber = (new Date()).getWeek();
+  var now = new Date();
+  let d = new Date().toLocaleString('ru', {
+  
+    month: 'long',
+    day: 'numeric'
+  });
 
   return (
     <div className={s.history_block}>
@@ -22,7 +33,7 @@ const History = (props) => {
               <div className={s.hisory_top}>
                 <div className={s.from}>
                   <div className={s.from_title}>{item.from_title}</div>
-                  <div className={s.money_title}>{item.money}</div>
+                  <div className={item.money<0?s.redmoney:s.money_title}>{item.money}</div>
                 </div>
                 <div className={s.to_title}>{item.to_title}</div>
               </div>
@@ -40,7 +51,7 @@ const History = (props) => {
         )
       ) : (
         <>
-          <div className={s.title}>ПОНЕДЕЛЬНИК, 3 апреля</div>
+          <div className={s.title}>{dayNames[now.getDay()]}, {d}</div>
           <div>
             Здесь будет список ваших операций, в котором вы всегда сможете найти
             историю ваших покупок, отредактировать, повторить или удалить их

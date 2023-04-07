@@ -4,9 +4,6 @@ input::-webkit-inner-spin-button {
 }
 input {outline:none;} 
 
-.disable {
-    display: none;
-}
 
 .select_style{
   -moz-appearance: none;
@@ -50,7 +47,8 @@ input {outline:none;}
     align-items: center;
     display: flex;
     justify-content: space-between;
-    background-color: rgb(237, 234, 234);
+    color: #fff;
+    background-color: rgb(0, 0, 0);
     border-bottom: 2px solid #c8c6c6;
 }
 
@@ -75,6 +73,7 @@ input {outline:none;}
     font-size: 18px;
     text-align: right;
     margin-right: 25px;
+    margin-bottom: 7px;
 }
 
 .stat_text{
@@ -97,6 +96,7 @@ input {outline:none;}
 
 .block_amount{
     width: 100%;
+    font-size: 13px;
 }
 
 
@@ -129,11 +129,16 @@ input {outline:none;}
     opacity: 0;
     transition: .2s linear;
     content: "";
-    left: 60px;
+    left: 80px;
     top: 0;
     width: 20px;
     height: 20px;
+    z-index: 1;
     cursor: pointer;
+}
+
+.input_style::placeholder{
+    color: #fff;
 }
 
 .modal_header{
@@ -142,13 +147,17 @@ input {outline:none;}
 }
 
 
-
 .newblock{
-    width: 50px;
+    width: 70px;
     padding-left: 10px;
-    margin-top: 60px;
-    height: 50px;
+    margin-top: 55px;
+    height: 70px;
 }
+
+.disable{
+    display: none;
+}
+
 
 .input_style{
     border: 0;
@@ -176,25 +185,27 @@ input {outline:none;}
 .addbtn{
     margin-top: 3px;
     width: 100%;
-    background-color: #05d398;
+    background-color: #000;
     height: 80px;
+    border: 2px solid #989797 ;
     font-weight: 400;
     font-size: 25px;
     line-height: 80px;
-    border: 0;
+    
     cursor: pointer;
     color: #fff;
-    border-radius: 0 0 10px 0;
+  
 }
 
 .modal_right{
     background-color: #fff;
     width: 100%;
-    margin-left: 10px;
+    
 }
 
 .modal{
     display: flex;
+    margin-right: 20px;
     
 }
 .icons_choose{
@@ -204,4 +215,43 @@ input {outline:none;}
 .modal_top{
     display: flex;
     align-items: center;
+}
+
+.circle{
+    background-color: #4aa55f;
+    position: relative;
+    width: 80px; /* задаете свои размеры */
+    height: 80px;
+    border-radius: 50% ;
+   z-index: 0;
+}
+
+.block_edit{
+    color: #4aa55f;
+}
+
+.redcircle{
+    background-color: red;
+    position: relative;
+    width: 80px; /* задаете свои размеры */
+    height: 80px;
+    border-radius: 50% ;
+   z-index: 0;
+}
+
+.icon{
+    position: absolute;
+    left: 15px;
+    top: 15px;
+    z-index: 1000;
+    width: 50px;
+    height: 50px;
+   
+}
+
+.icon_edit{
+    margin:10px 0;
+    position: relative;
+    
+    
 }

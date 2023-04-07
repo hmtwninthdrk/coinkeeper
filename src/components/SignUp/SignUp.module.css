@@ -1,5 +1,6 @@
 .container{
     display: flex;
+    height: 752px;
 }
 
 .sign_left{
@@ -8,6 +9,7 @@
     background-size: cover;
     height: 100vh; 
 }
+
 
 .sign_left_block{
     margin-top: 270px;

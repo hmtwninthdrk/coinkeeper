@@ -141,7 +141,7 @@ const Expenses = (props) => {
                       setId(item.id);
                     }}
                   />
-                  <img className={s.icon} src={`/img/${item.icons}`} />
+                 <div className={item.count>item.amount? s.redcircle:s.circle}><img className={s.icon} src={`/img/${item.icons}`} /></div>
                 </div>
 
                 <div className={s.block_info}>
@@ -234,7 +234,9 @@ const Expenses = (props) => {
       >
         <div className={s.modal}>
           <div className={s.modal_left}>
+          <div className={s.modal_top}>
             <div className={s.modal_header}>
+             
               <input
                 placeholder="Изменить"
                 className={s.input_style}
@@ -245,6 +247,7 @@ const Expenses = (props) => {
             </div>
 
             <img className={s.icons_choose} src={`/img/${icons}`} />
+              </div>
             <div className={s.modal_main}>
               <input
                 placeholder="Изменить"

@@ -1,5 +1,6 @@
 .container{
     display: flex;
+    height: 752px;
 }
 
 .sign_left{

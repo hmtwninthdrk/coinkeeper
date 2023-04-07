@@ -82,7 +82,7 @@ const HeaderInput = (props) => {
     <div className={s.HeaderInput}>
       <div className={s.formInput}>
         <div className={s.first}>
-          <h4>Из дохода в счет</h4>
+          <h4 className={s.inp_tt} >Из дохода в счет</h4>
           <div className={s.formBlock}>
             <div className={s.formtext}>Из</div>
 
@@ -124,6 +124,7 @@ const HeaderInput = (props) => {
               )}
             </select>
             <input
+            className={s.inpnumber}
               placeholder="Сумма"
               type="number"
               onChange={(e) => setMoney(e.target.value)}
@@ -135,7 +136,7 @@ const HeaderInput = (props) => {
           </div>
         </div>
         <div className={s.second}>
-          <h4>Из счета в Расходы</h4>
+          <h4 className={s.inp_tt}>Из счета в Расходы</h4>
           <div className={s.formBlock}>
             <div className={s.formtext}>Из</div>
             <select
@@ -180,6 +181,7 @@ const HeaderInput = (props) => {
               )}
             </select>
             <input
+              className={s.inpnumber}
               placeholder="Сумма"
               type="number"
               onChange={(e) => setMoney(e.target.value)}

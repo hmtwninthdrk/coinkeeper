@@ -120,7 +120,7 @@ const Account = (props) => {
                       setId(item.id);
                     }}
                   />
-                  <img className={s.icon} src={`/img/${item.icons}`} />
+                  <div className={s.circle}><img className={s.icon} src={`/img/${item.icons}`} /></div>
                 </div>
 
                 <div className={s.block_info}>
