@@ -39,7 +39,9 @@ const HeaderInput = (props) => {
         <div className={s.first}>
           <h4>Из дохода в счет</h4>
           <div className={s.formBlock}>
-            <select
+          <div className={s.formtext} >Из</div>
+
+            <select className={s.inp_select}
               name=""
               id=""
               onClick={rerend}
@@ -47,12 +49,13 @@ const HeaderInput = (props) => {
                 setSelectorFrom(e.target.value);
               }}
             >
-              <option value="asd" selected disabled>
+              <option className={s.inp_opt} value="asd" selected disabled>
                 Выбрать
               </option>
               {incomeOptions}
             </select>
-            <select
+            <div className={s.formtext} >В</div>
+            <select className={s.inp_select}
               name=""
               id=""
               onClick={rerend}
@@ -60,60 +63,62 @@ const HeaderInput = (props) => {
                 setSelectorTo(e.target.value);
               }}
             >
-              <option value="asd" selected disabled>
+              <option className={s.inp_opt} value="asd" selected disabled>
                 Выбрать
               </option>
               {props.data.map((item) =>
                 item.title == "Account" ? (
-                  <option value={item.name}>{item.name}</option>
+                  <option className={s.inp_opt} value={item.name}>{item.name}</option>
                 ) : (
                   ""
                 )
               )}
             </select>
-            <input type="number" onChange={(e) => setMoney(e.target.value)} />
-            <button onClick={transfer}>DO IT</button>
+            <input placeholder="Сумма" type="number" onChange={(e) => setMoney(e.target.value)} />
+            <button className={s.btn } onClick={transfer}>DO IT</button>
           </div>
         </div>
         <div className={s.second}>
           <h4>Из счета в Расходы</h4>
           <div className={s.formBlock}>
-            <select
+          <div className={s.formtext} >Из</div>
+            <select className={s.inp_select}
               onClick={rerend}
               onChange={(e) => {
                 setSelectorFrom(e.target.value);
               }}
             >
-              <option value="asd" selected disabled>
+              <option className={s.inp_opt} value="asd" selected disabled>
                 Выбрать
               </option>
               {props.data.map((item) =>
                 item.title == "Account" ? (
-                  <option value={item.name}>{item.name}</option>
+                  <option className={s.inp_opt} value={item.name}>{item.name}</option>
                 ) : (
                   ""
                 )
               )}
             </select>
-            <select
+            <div className={s.formtext} >В</div>
+            <select className={s.inp_select}
               onClick={rerend}
               onChange={(e) => {
                 setSelectorTo(e.target.value);
               }}
             >
-              <option value="asd" selected disabled>
+              <option  className={s.inp_opt} value="asd" selected disabled>
                 Выбрать
               </option>
               {props.data.map((item) =>
                 item.title == "Expenses" ? (
-                  <option value={item.name}>{item.name}</option>
+                  <option className={s.inp_opt} value={item.name}>{item.name}</option>
                 ) : (
                   ""
                 )
               )}
             </select>
-            <input type="number" onChange={(e) => setMoney(e.target.value)} />
-            <button onClick={transfer}>DO IT</button>
+            <input placeholder="Сумма" type="number" onChange={(e) => setMoney(e.target.value)} />
+            <button className={s.btn }  onClick={transfer}>DO IT</button>
           </div>
         </div>
       </div>

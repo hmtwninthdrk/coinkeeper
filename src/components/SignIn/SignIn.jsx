@@ -43,18 +43,7 @@ function SignIn({ setIsAuth, state }) {
   };
   return (
     <div className={si.container}>
-      <div className={si.sign_left}>
-        <div className={si.sign_left_block}>
-          <span className={si.left_text1}>ToDo</span>
-
-          <div>
-            <span className={si.left_text2}>List</span>
-            <span className={si.left_text3}>
-              will help you focus on any activity — from work to play.
-            </span>
-          </div>
-        </div>
-      </div>
+      
 
       <div className={si.form}>
         <div className={si.sign_title}>Sign in</div>

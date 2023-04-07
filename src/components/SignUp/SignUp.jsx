@@ -54,18 +54,7 @@ const SignUp = () => {
   };
   return (
     <div className={su.container}>
-      <div className={su.sign_left}>
-        <div className={su.sign_left_block}>
-          <span className={su.left_text1}>ToDo</span>
-
-          <div>
-            <span className={su.left_text2}>List</span>
-            <span className={su.left_text3}>
-              will help you focus on any activity — from work to play.
-            </span>
-          </div>
-        </div>
-      </div>
+      
 
       <div className={su.form}>
         <div className={su.sign_title}>Sign up</div>

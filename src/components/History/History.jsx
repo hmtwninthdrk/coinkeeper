@@ -1,4 +1,5 @@
 import React from "react";
+import trash from "../../components/trash.png"
 import s from "./History.module.css";
 const History = (props) => {
   return (
@@ -14,10 +15,7 @@ const History = (props) => {
               <div className={s.to_title}>{item.to_title}</div>
             </div>
             <div className={s.history_bottom}>
-              <div className={s.currentToMoney}></div>
-              <div>Баланс</div>
-              <div className={s.money_title}></div>
-              <div>Итого</div>
+             <img className={s.delete} src={trash}></img>
             </div>
           </div>
         ))

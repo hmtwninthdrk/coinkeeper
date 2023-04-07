@@ -32,8 +32,10 @@ function Header(props) {
   return (
     <div className={s.Header}>
       <div className={s.block}>
-        LOGO
-        <button onClick={exitButton}>EXIT</button>
+      <img src="/img/logocp.png" className={s.logo} />
+        <div className={s.buttons_container}>
+        <button className={s.exit} onClick={exitButton}>EXIT</button>
+        </div>
       </div>
     </div>
   );

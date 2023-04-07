@@ -8,9 +8,9 @@
 
 .history_block{
     margin-top: 50px;
-    
     width: 50%;
     box-sizing: border-box;
+   
 }
 
 .from_title{
@@ -32,7 +32,14 @@
 
 .history_inner{
     padding: 25px;
-    background-color: #dedbdb;
+    background-color: #ffffff;
     width: 500px;
-    height: 200px;
+    height: 100px;
+}
+
+.delete{
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    float: right;
 }
